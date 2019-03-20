@@ -1,0 +1,18 @@
+bases:
+    - ../../base
+patchesStrategicMerge:
+  - site_config_map.yaml
+patchesJson6902:
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: DNS
+    name: cluster
+  path: ./patches/cluster_dns_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: Infrastructure
+    name: cluster
+  path: ./patches/cluster_infrastructure_02_config_patch.yaml

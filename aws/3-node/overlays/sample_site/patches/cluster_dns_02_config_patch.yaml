@@ -1,0 +1,16 @@
+- op: replace
+  path: /spec/baseDomain
+  value: kni-edge.devcluster.openshift.com
+
+- op: replace
+  path: /spec/privateZone/tags/Name
+  value: kni-edge-int
+
+- op: add
+  path: '/spec/privateZone/tags/kubernetes.io~1cluster~1kni-edge'
+  value: owned
+
+- op: replace
+  path: /spec/publicZone/id
+  value: "{{.publicZoneID }}"
+
