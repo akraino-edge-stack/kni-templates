@@ -4,7 +4,7 @@ metadata:
   name: host-etcd
   namespace: kube-system
   annotations:
-    alpha.installer.openshift.io/dns-suffix: {{ settings.clusterName }}.{{ settings.BaseDomain }}
+    alpha.installer.openshift.io/dns-suffix: clusterName.baseDomain
 subsets:
 - addresses:
   - ip: 192.0.2.1
