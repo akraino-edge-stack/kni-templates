@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+  install-config: |
+    apiVersion: v1beta3
+    baseDomain: {{ .baseDomain }}
+    metadata:
+        creationTimestamp: null
+        name: {{ .clusterName }}
+    compute:
+      - name: worker
+        platform: {}
+        replicas: 3
+    controlPlane:
+      name: master
+      platform: {}
+      replicas: 3
+    networking:
+      clusterNetworks:
+        - cidr: {{ .clusterCIDR }}
+          hostSubnetLength: 9
+      machineCIDR: {{ .machineCIDR }}
+      serviceCIDR: {{ .serviceCIDR }}
+      type: OpenShiftSDN
+    platform:
+      aws:
+        region: {{ .AWSRegion }}
+kind: ConfigMap
+metadata:
+  name: cluster-config-v1
+  namespace: kube-system
