@@ -1,0 +1,7 @@
+- op: add
+  path: /spec/clusterNetwork/pods/cidrBlocks/-
+  value: 10.128.0.0/14
+
+- op: add
+  path: /spec/clusterNetwork/services/cidrBlocks/-
+  value: 172.30.0.0/16
