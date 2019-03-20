@@ -1,0 +1,63 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: MachineSet
+metadata:
+  creationTimestamp: null
+  labels:
+    machine.openshift.io/cluster-api-cluster: clusterName
+    machine.openshift.io/cluster-api-machine-role: worker
+    machine.openshift.io/cluster-api-machine-type: worker
+  name: clusterName-worker-AWSRegionb
+  namespace: openshift-machine-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      machine.openshift.io/cluster-api-cluster: clusterName
+      machine.openshift.io/cluster-api-machineset: clusterName-worker-AWSRegionb
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        machine.openshift.io/cluster-api-cluster: clusterName
+        machine.openshift.io/cluster-api-machine-role: worker
+        machine.openshift.io/cluster-api-machine-type: worker
+        machine.openshift.io/cluster-api-machineset: clusterName-worker-AWSRegionb
+    spec:
+      metadata:
+        creationTimestamp: null
+      providerSpec:
+        value:
+          ami:
+            id: AWSAmiID
+          apiVersion: awsproviderconfig.openshift.io/v1beta1
+          blockDevices:
+          - ebs:
+              iops: 0
+              volumeSize: 120
+              volumeType: gp2
+          deviceIndex: 0
+          iamInstanceProfile:
+            id: clusterName-worker-profile
+          instanceType: m4.large
+          kind: AWSMachineProviderConfig
+          metadata:
+            creationTimestamp: null
+          placement:
+            availabilityZone: AWSRegionb
+            region: AWSRegion
+          publicIp: null
+          securityGroups:
+          - filters:
+            - name: tag:Name
+              values: []
+          subnet:
+            filters:
+            - name: tag:Name
+              values: []
+          tags: []
+          userDataSecret:
+            name: worker-user-data
+      versions:
+        kubelet: ""
+status:
+  replicas: 0

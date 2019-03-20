@@ -1,0 +1,14 @@
+apiVersion: config.openshift.io/v1
+kind: Network
+metadata:
+  creationTimestamp: null
+  name: cluster
+spec:
+  clusterNetwork: []
+  networkType: OpenShiftSDN
+  serviceNetwork: []
+status:
+  clusterNetwork: null
+  clusterNetworkMTU: 0
+  networkType: ""
+  serviceNetwork: null

@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+    - manifests/04-openshift-machine-config-operator.yaml
+    - manifests/cluster-config.yaml
+    - manifests/cluster-dns-02-config.yml
+    - manifests/cluster-infrastructure-02-config.yml
+    - manifests/cluster-ingress-02-config.yml
+    - manifests/cluster-network-01-crd.yml
+    - manifests/cluster-network-02-config.yml
+    - manifests/cvo-overrides.yaml
+    - manifests/etcd-service.yaml
+    - manifests/host-etcd-service-endpoints.yaml
+    - manifests/host-etcd-service.yaml
+    - manifests/kube-cloud-config.yaml
+    - manifests/kube-system-configmap-etcd-serving-ca.yaml
+    - manifests/kube-system-configmap-root-ca.yaml
+    - manifests/kube-system-secret-etcd-client.yaml
+    - manifests/machine-config-server-tls-secret.yaml
+    - manifests/pull.json
+    - openshift/99_binding-discovery.yaml
+    - openshift/99_cloud-creds-secret.yaml
+    - openshift/99_kubeadmin-password-secret.yaml
+    - openshift/99_openshift-cluster-api_cluster.yaml
+    - openshift/99_openshift-cluster-api_master-machines-0.yaml
+    - openshift/99_openshift-cluster-api_master-machines-1.yaml
+    - openshift/99_openshift-cluster-api_master-machines-2.yaml
+    - openshift/99_openshift-cluster-api_master-user-data-secret.yaml
+    - openshift/99_openshift-cluster-api_worker-machineset_1.yaml
+    - openshift/99_openshift-cluster-api_worker-machineset_2.yaml
+    - openshift/99_openshift-cluster-api_worker-user-data-secret.yaml
+    - openshift/99_role-cloud-creds-secret-reader.yaml

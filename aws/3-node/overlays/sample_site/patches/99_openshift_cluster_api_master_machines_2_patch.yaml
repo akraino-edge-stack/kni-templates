@@ -1,0 +1,49 @@
+- op: replace
+  path: /metadata/name
+  value: kni-edge-master-2
+
+- op: replace
+  path: '/metadata/labels/machine.openshift.io~1cluster-api-cluster'
+  value: kni-edge
+
+- op: replace
+  path: /spec/providerSpec/value/ami/id
+  value: "{{ .AWSAmiID }}"
+
+- op: replace
+  path: /spec/providerSpec/value/iamInstanceProfile/id
+  value: kni-edge-master-profile
+
+- op: add
+  path: /spec/providerSpec/value/loadBalancers/-
+  value:
+    name: kni-edge-ext
+    type: network
+
+- op: add
+  path: /spec/providerSpec/value/loadBalancers/-
+  value:
+    name: kni-edge-int
+    type: network
+
+- op: replace
+  path: /spec/providerSpec/value/placement/availabilityZone
+  value: "{{ .AWSRegion }}a"
+
+- op: replace
+  path: /spec/providerSpec/value/placement/region
+  value: "{{ .AWSRegion }}"
+
+- op: add
+  path: /spec/providerSpec/value/securityGroups/0/filters/0/values/-
+  value: kni-edge-master-sg
+
+- op: add
+  path: /spec/providerSpec/value/subnet/filters/0/values/-
+  value: "kni-edge-private-{{ .AWSRegion }}a"
+
+- op: add
+  path: /spec/providerSpec/value/tags/-
+  value:
+      name: 'kubernetes.io/cluster/kni-edge'
+      value: owned

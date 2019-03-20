@@ -1,0 +1,131 @@
+bases:
+    - ../../base
+patchesStrategicMerge:
+  - configmaps/cluster-config.yaml
+  - configmaps/kube-system-configmap-etcd-serving-ca.yaml
+  - configmaps/kube-system-configmap-root-ca.yaml
+patchesJson6902:
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: DNS
+    name: cluster
+  path: ./patches/cluster_dns_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: Infrastructure
+    name: cluster
+  path: ./patches/cluster_infrastructure_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: Ingress
+    name: cluster
+  path: ./patches/cluster_ingress_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: Network
+    name: cluster
+  path: ./patches/cluster_network_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: ClusterVersion
+    name: version
+  path: ./patches/cvo_overrides_patch.yaml
+
+- target:
+    version: v1
+    kind: Endpoints
+    name: host-etcd
+  path: ./patches/host_etcd_service_endpoints_patch.yaml
+
+- target:
+    version: v1
+    kind: Secret
+    name: etcd-client
+  path: ./patches/kube_system_secret_etcd_client_patch.yaml
+
+- target:
+    version: v1
+    kind: Secret
+    name: machine-config-server-tls
+  path: ./patches/machine_config_server_tls_secret_patch.yaml
+
+- target:
+    version: v1
+    kind: Secret
+    name: coreos-pull-secret
+  path: ./patches/coreos_pull_secret_patch.yaml
+
+- target:
+    version: v1
+    kind: Secret
+    name: aws-creds
+  path: ./patches/99_clouds_creds_secret_patch.yaml
+
+- target:
+    version: v1
+    kind: Secret
+    name: kubeadmin
+  path: ./patches/99_kubeadmin_password_secret_patch.yaml
+
+- target:
+    group: machine.openshift.io
+    version: v1beta1
+    kind: Cluster
+    name: clusterName
+  path: ./patches/99_openshift_cluster_api_cluster_patch.yaml
+
+- target:
+    group: machine.openshift.io
+    version: v1beta1
+    kind: Machine
+    name: clusterName-master-0
+  path: ./patches/99_openshift_cluster_api_master_machines_0_patch.yaml
+
+- target:
+    group: machine.openshift.io
+    version: v1beta1
+    kind: Machine
+    name: clusterName-master-1
+  path: ./patches/99_openshift_cluster_api_master_machines_1_patch.yaml
+
+- target:
+    group: machine.openshift.io
+    version: v1beta1
+    kind: Machine
+    name: clusterName-master-2
+  path: ./patches/99_openshift_cluster_api_master_machines_2_patch.yaml
+
+- target:
+    version: v1
+    kind: Secret
+    name: master-user-data
+  path: ./patches/99_openshift_cluster_api_master_user_data_secret_patch.yaml
+
+- target:
+    group: machine.openshift.io
+    version: v1beta1
+    kind: MachineSet
+    name: clusterName-worker-AWSRegiona
+  path: ./patches/99_openshift_cluster_api_worker_machineset_1_patch.yaml
+
+- target:
+    group: machine.openshift.io
+    version: v1beta1
+    kind: MachineSet
+    name: clusterName-worker-AWSRegionb
+  path: ./patches/99_openshift_cluster_api_worker_machineset_2_patch.yaml
+
+- target:
+    version: v1
+    kind: Secret
+    name: worker-user-data
+  path: ./patches/99_openshift_cluster_api_worker_user_data_secret_patch.yaml

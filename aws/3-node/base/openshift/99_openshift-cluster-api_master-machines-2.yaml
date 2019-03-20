@@ -1,0 +1,49 @@
+apiVersion: machine.openshift.io/v1beta1
+kind: Machine
+metadata:
+  creationTimestamp: null
+  labels:
+    machine.openshift.io/cluster-api-cluster: clusterName
+    machine.openshift.io/cluster-api-machine-role: master
+    machine.openshift.io/cluster-api-machine-type: master
+  name: clusterName-master-2
+  namespace: openshift-machine-api
+spec:
+  metadata:
+    creationTimestamp: null
+  providerSpec:
+    value:
+      ami:
+        id: AWSAmiID
+      apiVersion: awsproviderconfig.openshift.io/v1beta1
+      blockDevices:
+      - ebs:
+          iops: 0
+          volumeSize: 120
+          volumeType: gp2
+      deviceIndex: 0
+      iamInstanceProfile:
+        id: clusterName-master-profile
+      instanceType: m4.xlarge
+      kind: AWSMachineProviderConfig
+      loadBalancers: []
+      metadata:
+        creationTimestamp: null
+      placement:
+        availabilityZone: AWSRegiona
+        region: AWSRegion
+      publicIp: null
+      securityGroups:
+      - filters:
+        - name: tag:Name
+          values: []
+      subnet:
+        filters:
+        - name: tag:Name
+          values: []
+      tags: []
+      userDataSecret:
+        name: master-user-data
+  versions:
+    kubelet: ""
+status: {}

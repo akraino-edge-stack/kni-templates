@@ -1,0 +1,10 @@
+apiVersion: config.openshift.io/v1
+kind: Infrastructure
+metadata:
+  creationTimestamp: null
+  name: cluster
+spec: {}
+status:
+  apiServerURL: https://api.clusterName.baseDomain:6443
+  etcdDiscoveryDomain: clusterName.baseDomain
+  platform: AWS

@@ -1,0 +1,7 @@
+- op: replace
+  path: /status/apiServerURL
+  value: http://api.kni-edge.devcluster.openshift.com:6443
+
+- op: replace
+  path: /status/etcdDiscoveryDomain
+  value: kni-edge.devcluster.openshift.com
