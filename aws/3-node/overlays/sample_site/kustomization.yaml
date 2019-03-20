@@ -1,0 +1,9 @@
+bases:
+    - ../../base
+patchesStrategicMerge:
+  - site_config_map.yaml
+#configMapGenerator:
+#    - name: cluster-config-v1
+#      behavior: merge
+#      files:
+#          - install-config
