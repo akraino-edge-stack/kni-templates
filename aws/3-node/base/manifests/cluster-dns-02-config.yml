@@ -1,0 +1,13 @@
+apiVersion: config.openshift.io/v1
+kind: DNS
+metadata:
+  creationTimestamp: null
+  name: cluster
+spec:
+  baseDomain: clusterName.baseDomain
+  privateZone:
+    tags:
+      Name: clusterName-int
+  publicZone:
+    id: publicZoneID
+status: {}

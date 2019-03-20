@@ -4,12 +4,9 @@ metadata:
   creationTimestamp: null
   name: cluster
 spec:
-  clusterNetwork:
-  - cidr: {{ settings.clusterCIDR }}
-    hostPrefix: 23
-  networkType: {{ settings.SDNType }}
-  serviceNetwork:
-  - {{ settings.serviceNetworkCIDR }}
+  clusterNetwork: []
+  networkType: OpenShiftSDN
+  serviceNetwork: []
 status:
   clusterNetwork: null
   clusterNetworkMTU: 0

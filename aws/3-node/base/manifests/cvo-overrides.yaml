@@ -6,4 +6,4 @@ metadata:
 spec:
   upstream: https://api.openshift.com/api/upgrades_info/v1/graph
   channel: stable-4.0
-  clusterID: 27495a50-7c22-4748-b12f-300c63563937
+  clusterID: clusterID

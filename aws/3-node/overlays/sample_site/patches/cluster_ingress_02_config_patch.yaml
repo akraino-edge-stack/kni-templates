@@ -1,0 +1,3 @@
+- op: replace
+  path: /spec/domain
+  value: http://apps.kni-edge.devcluster.openshift.com

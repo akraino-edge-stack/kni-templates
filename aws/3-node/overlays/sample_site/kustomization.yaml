@@ -1,0 +1,46 @@
+bases:
+    - ../../base
+patchesStrategicMerge:
+  - configmaps/cluster-config.yaml
+  - configmaps/kube-system-configmap-etcd-serving-ca.yaml
+patchesJson6902:
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: DNS
+    name: cluster
+  path: ./patches/cluster_dns_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: Infrastructure
+    name: cluster
+  path: ./patches/cluster_infrastructure_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: Ingress
+    name: cluster
+  path: ./patches/cluster_ingress_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: Network
+    name: cluster
+  path: ./patches/cluster_network_02_config_patch.yaml
+
+- target:
+    group: config.openshift.io
+    version: v1
+    kind: ClusterVersion
+    name: version
+  path: ./patches/cvo_overrides_patch.yaml
+
+- target:
+    version: v1
+    kind: Endpoints
+    name: host-etcd
+  path: ./patches/host_etcd_service_endpoints_patch.yaml
