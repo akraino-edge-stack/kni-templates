@@ -1,3 +1,4 @@
 resources:
+- customizations/scc.yaml
 - operators/kubevirt/kubevirt-operator.yaml
 - operators/kubevirt/kubevirt-cr.yaml
