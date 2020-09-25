@@ -2,4 +2,3 @@
 #
 0706f97cf3b2243094a8f24452092769b1065db0                           	GitHub Replication
 fbace1f1c05f2c03dc61b55c2e9d2ea7a99d48c9                           	saml/akraino-gerrit-kni-shared
-ldap:cn=akraino-gerrit-kni-shared,ou=Groups,dc=freestandards,dc=org	ldap/akraino-gerrit-kni-shared
